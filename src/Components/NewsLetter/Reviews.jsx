@@ -16,7 +16,7 @@ export default function Reviews() {
 
         <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-3">
           <div class="w-12 md:w-14 h-12 md:h-14 bg-gray-100 rounded-full overflow-hidden shadow-lg">
-            <img src="https://images.unsplash.com/photo-1567515004624-219c11d31f2e??auto=format&q=75&fit=crop&w=112" loading="lazy" alt="Photo by Radu Florin" class="w-full h-full object-cover object-center" />
+            <img src="https://images.unsplash.com/photo-1567515004624-219c11d31f2e??auto=format&q=75&fit=crop&w=112" loading="lazy" alt="Radu Florin" class="w-full h-full object-cover object-center" />
           </div>
 
           <div>
@@ -35,7 +35,7 @@ export default function Reviews() {
 
         <div class="flex flex-col sm:flex-row items-center gap-2 md:gap-3">
           <div class="w-12 md:w-14 h-12 md:h-14 bg-gray-100 rounded-full overflow-hidden shadow-lg">
-            <img src="https://images.unsplash.com/photo-1532073150508-0c1df022bdd1?auto=format&q=75&fit=crop&w=112" loading="lazy" alt="Photo by christian ferrer" class="w-full h-full object-cover object-center" />
+            <img src="https://images.unsplash.com/photo-1532073150508-0c1df022bdd1?auto=format&q=75&fit=crop&w=112" loading="lazy" alt=" christian ferrer" class="w-full h-full object-cover object-center" />
           </div>
 
           <div>

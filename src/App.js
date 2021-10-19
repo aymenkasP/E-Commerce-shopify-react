@@ -11,7 +11,7 @@ import { useContext } from 'react';
 
 
 function App() {
-	const { Checkout, OpenCart , IsCartOpen  } = useContext(ShopifyContext)
+	const { IsCartOpen  } = useContext(ShopifyContext)
 
 	
 

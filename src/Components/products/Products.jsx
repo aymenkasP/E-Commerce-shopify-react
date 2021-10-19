@@ -4,7 +4,7 @@ import ProductCard from './ProductCard'
 
 
 export default function Products() {
-    const {Products ,IsLoading  } = useContext(ShopifyContext)
+    const {Products} = useContext(ShopifyContext)
     console.log('products'  , Products.map(item => item.id))
 
     return (
