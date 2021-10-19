@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import FeatureSection from './Components/featureSection/FeatureSection';
+import Footer from './Components/Footer/Footer';
+import Hero from './Components/Hero/Hero';
+import Nav from './Components/nav/Nav';
+import Reviews from './Components/NewsLetter/Reviews';
+import Products from './Components/products/Products';
+import CheckoutSec from './Components/Checkout/Checkout';
+import { ShopifyContext } from './Context/ShopifyContext';
+import { useContext } from 'react';
+
 
 function App() {
+	const { Checkout, OpenCart , IsCartOpen  } = useContext(ShopifyContext)
+
+	
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+		<Nav />
+		{IsCartOpen && <CheckoutSec />}
+		<Hero />
+		<FeatureSection />
+        <Products />    
+		<Reviews />
+		<Footer />
     </div>
   );
 }

@@ -1,0 +1,117 @@
+import { createContext, useEffect, useState } from 'react';
+import Client from 'shopify-buy';
+
+
+// Initializing a client to return content in the store's primary language
+const client = Client.buildClient({
+  domain: "bestuiux.myshopify.com",
+  storefrontAccessToken: "905353ce7282a7aec93fd7e6b7e39237"
+});
+
+
+const ShopifyContext = createContext();
+
+ function ShopifyProvider({children}) {
+
+        const [Products, setProducts] = useState([])
+        const [Product, setProduct] = useState({})
+        const [Checkout, setCheckout] = useState({})
+        const [IsCartOpen, setIsCartOpen] = useState(false)
+        const [IsLoading, setIsLoading] = useState(true)
+
+
+   useEffect(() => {
+         setIsLoading(true)
+       client.product.fetchAll().then((products) => {
+        // Do something with the products
+        setProducts(products) });
+
+        
+        if (localStorage.checkout) {
+          fetchCheckout(localStorage.checkout);
+        } else {
+          createCheckout();
+        }
+        setIsLoading(false)
+   }, [])
+
+
+
+  const createCheckout = async () => {
+    const checkout = await client.checkout.create();
+    localStorage.setItem("checkout", checkout.id);
+    setCheckout(checkout);
+  };
+
+  const  fetchCheckout =  (checkoutId) => {
+    client.checkout
+      .fetch(checkoutId)
+      .then((checkout) => {
+        setCheckout(checkout);
+      })
+      .catch((err) => console.log(err));
+  };
+   
+
+  const addItemToCheckout  = (variantId, quantity) => {
+    setIsLoading(true)
+    const lineItemsToAdd = [
+        {
+          variantId: variantId,
+          quantity:quantity,
+        }
+      ];
+
+      client.checkout.addLineItems(Checkout.id, lineItemsToAdd).then((checkout) => {
+        // Do something with the updated checkout
+        setCheckout(checkout)
+        setIsLoading(false)
+      });
+      
+  }
+
+
+  const removeItemFromCheckout  = (productId) => {
+    setIsLoading(true)
+    // Remove an item from the checkout
+    client.checkout.removeLineItems(Checkout.id, productId).then((checkout) => {
+      setCheckout(checkout) 
+      setIsLoading(false)
+    });
+    
+  }
+
+
+
+
+
+    const  fetchProductWithId =  (id) => {
+      setIsLoading(true)
+        client.product.fetch(id).then((product) => {
+           setProduct(product); 
+           setIsLoading(false)
+        });
+       
+      };
+
+      const OpenCart = () => {
+        setIsCartOpen(true);
+      }
+      const CloseCart = () => {
+        setIsCartOpen(false);
+      }
+
+      return (
+        <ShopifyContext.Provider
+          value={{Products,Checkout,fetchProductWithId,Product ,addItemToCheckout,removeItemFromCheckout, IsCartOpen ,OpenCart,CloseCart,IsLoading}}
+        >
+          {children}
+        </ShopifyContext.Provider>
+      );
+}
+
+
+const ShopConsumer = ShopifyContext.Consumer;
+export { ShopConsumer, ShopifyContext };
+
+export default ShopifyProvider;
