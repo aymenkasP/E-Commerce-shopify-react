@@ -1,9 +1,10 @@
-import React, { useContext  } from 'react'
-import { ShopifyContext } from '../../Context/ShopifyContext'
+import { useHistory } from "react-router"
 
-export default function ProductCard({image ,title , price , variantsId}) {
-    const {addItemToCheckout,OpenCart } = useContext(ShopifyContext)
-
+export default function ProductCard({image ,title , price , productId}) {
+    const history = useHistory()
+    function toProductPage(){
+        history.push(`/product/${productId}`)
+    }
     return (
         <>
             <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
@@ -25,11 +26,8 @@ export default function ProductCard({image ,title , price , variantsId}) {
                                   focus:bg-gray-700 
                                   dark:focus:bg-gray-600
                                    focus:outline-none"
-                                   onClick={()=> {
-                                   addItemToCheckout(variantsId , 1)
-                                   OpenCart()}
-                                   }
-                                   > add to card    
+                                   onClick={()=>toProductPage()}
+                                   > more
                                    </button>
                             </div>
                     </div>

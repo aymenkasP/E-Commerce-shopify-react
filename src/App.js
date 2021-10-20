@@ -8,6 +8,11 @@ import Products from './Components/products/Products';
 import CheckoutSec from './Components/Checkout/Checkout';
 import { ShopifyContext } from './Context/ShopifyContext';
 import { useContext } from 'react';
+import {
+	Switch,
+	Route,
+  } from "react-router-dom";
+import ProductPage from './Components/ProductPage/ProductPage';
 
 
 function App() {
@@ -19,10 +24,18 @@ function App() {
     <div className="App">
 		<Nav />
 		{IsCartOpen && <CheckoutSec />}
-		<Hero />
-		<FeatureSection />
-        <Products />    
-		<Reviews />
+		<Switch >
+		<Route exact path="/">
+            <Hero />
+			<FeatureSection />
+			<Products />    
+			<Reviews />
+          </Route>
+
+		<Route path="/product/:id">
+            <ProductPage />
+          </Route>	
+		</Switch>
 		<Footer />
     </div>
   );

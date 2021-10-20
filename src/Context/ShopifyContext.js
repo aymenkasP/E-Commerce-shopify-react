@@ -53,7 +53,7 @@ const ShopifyContext = createContext();
   };
    
 
-  const addItemToCheckout  = (variantId, quantity) => {
+  function addItemToCheckout (variantId, quantity){
     setIsLoading(true)
     const lineItemsToAdd = [
         {
@@ -66,6 +66,7 @@ const ShopifyContext = createContext();
         // Do something with the updated checkout
         setCheckout(checkout)
         setIsLoading(false)
+        OpenCart()
       });
       
   }
