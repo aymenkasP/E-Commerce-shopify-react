@@ -4,7 +4,7 @@ import { ShopifyContext } from '../../Context/ShopifyContext'
 export default function CheckoutItem({product}) {
   const [Quantity, setQuantity,] = useState(product.quantity)
     const {removeItemFromCheckout , IsLoading,UpdatingLineItems } = useContext(ShopifyContext)
-    console.log(product.variant.image.src)
+    
     useEffect(() => {
 
     }, [Quantity,product.id])

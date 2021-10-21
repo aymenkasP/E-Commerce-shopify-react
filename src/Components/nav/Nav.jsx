@@ -11,9 +11,9 @@ export default function Nav() {
         <>
              <header className="p-2 shadow-sm bg-white text-coolGray-800 sticky top-0  ">
               <div className="container flex justify-between h-16 mx-auto z-50 " >
-                <a href="#products" aria-label="Back to homepage" className="flex items-center p-2">
+                <NavLink to="/"  className="flex items-center p-2">
                 <FaShopify  className=" p-2 text-5xl" />
-                </a>
+                </NavLink>
                 <ul className="items-stretch hidden space-x-3 md:flex">
                   <li className="flex">
                   <NavLink to="/" activeClassName="selected" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ShopifyContext } from '../../Context/ShopifyContext'
 import ProductCard from './ProductCard'
+import LazyLoad from 'react-lazyload';
 
 
 export default function Products() {
@@ -14,16 +15,19 @@ export default function Products() {
                     <h2 className="text-2xl font-extrabold tracking-tight capitalize text-gray-900">our products</h2>
 
                     <div className="mt-6 grid grid-cols-1   gap-y-10 gap-x-64 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {Products?.map((product) => {
-                    return   <ProductCard 
+                    {Products?.map((product) => 
+                        <LazyLoad offset={100} key={product.id}>
+                        <ProductCard 
                     image={product.images[0].src}
                     title ={product.title}
                     price={product.variants[0].price}
                     variantsId={product.variants[0].id}
                     productId={product.id}
-                    key={product.id}  />
+                    />
+                        </LazyLoad>
+                       
 
-                    }
+                    
                     )}
                     
                     </div>
