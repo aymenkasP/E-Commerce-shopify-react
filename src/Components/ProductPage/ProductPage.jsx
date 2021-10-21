@@ -1,15 +1,9 @@
 import React, {useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { ShopifyContext } from '../../Context/ShopifyContext'
-import { StarIcon } from '@heroicons/react/solid'
-import { RadioGroup } from '@headlessui/react'
 import parse from 'html-react-parser';
 
-const reviews = { href: '#', average: 4, totalCount: 117 }
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 export default function ProductPage() {
 
     const {fetchProductWithId , Product,addItemToCheckout,IsLoading} = useContext(ShopifyContext)
@@ -19,15 +13,8 @@ export default function ProductPage() {
     useEffect(() => {
             fetchProductWithId(id)
 
-    }, [id])
+    }, [id])// eslint-disable-line react-hooks/exhaustive-deps
 
-    const [selectedColor, setSelectedColor] = useState(Product?.options && Product?.options[0].values.map(item =>  (
-      { name: item.value, class: `bg-${item.value}`, selectedClass: 'ring-gray-400' }
-    ) ) )
-    const [selectedSize, setSelectedSize] = useState(Product)
-    const [Description, setDescription] = useState( Product.descriptionHtml)
-
-    console.log("product" , Product.variants?.[0].presentmentPrices?.[0].price.currencyCode)
     return (
         <>
          <div className="container px-5 py-24 mx-auto">
