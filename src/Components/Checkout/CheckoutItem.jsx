@@ -4,6 +4,7 @@ import { ShopifyContext } from '../../Context/ShopifyContext'
 export default function CheckoutItem({product}) {
   const [Quantity, setQuantity,] = useState(product.quantity)
     const {removeItemFromCheckout , IsLoading,UpdatingLineItems } = useContext(ShopifyContext)
+    console.log(product.variant.image.src)
     useEffect(() => {
 
     }, [Quantity,product.id])
@@ -11,7 +12,7 @@ export default function CheckoutItem({product}) {
         <>     <li className="py-6 flex">
                               <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                                 <img
-                                  src={product.variant.image.src}
+                                  src={product?.variant?.image?.src}
                                   alt={product.imageAlt}
                                   className="w-full h-full object-center object-cover"
                                 />
@@ -21,7 +22,7 @@ export default function CheckoutItem({product}) {
                                 <div>
                                   <div className="flex justify-between text-base font-medium text-gray-900">
                                     <h3>
-                                      <a href={product.href}>{product.title}</a>
+                                        {product.title}
                                     </h3>
                                     <p className="ml-4">{product.variant.price}</p>
                                   </div>
