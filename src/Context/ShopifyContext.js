@@ -71,6 +71,23 @@ const ShopifyContext = createContext();
       
   }
 
+ function UpdatingLineItems(id, quantity){
+  setIsLoading(true)
+
+const lineItemsToUpdate = [ {id,quantity }];
+
+  // Update the line item on the checkout (change the quantity or variant)
+client.checkout.updateLineItems(Checkout.id, lineItemsToUpdate).then((checkout) => {
+  // Do something with the updated checkout
+  setCheckout(checkout) 
+  setIsLoading(false)
+
+});
+
+ }
+
+
+
 
   const removeItemFromCheckout  = (productId) => {
     setIsLoading(true)
@@ -104,7 +121,7 @@ const ShopifyContext = createContext();
 
       return (
         <ShopifyContext.Provider
-          value={{Products,Checkout,fetchProductWithId,Product ,addItemToCheckout,removeItemFromCheckout, IsCartOpen ,OpenCart,CloseCart,IsLoading}}
+          value={{Products,Checkout,fetchProductWithId,Product ,addItemToCheckout,UpdatingLineItems,removeItemFromCheckout, IsCartOpen ,OpenCart,CloseCart,IsLoading}}
         >
           {children}
         </ShopifyContext.Provider>

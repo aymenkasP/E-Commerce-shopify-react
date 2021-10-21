@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AiOutlineShopping } from 'react-icons/ai'
 import { FaShopify } from 'react-icons/fa'
+import { NavLink } from 'react-router-dom'
 import { ShopifyContext } from '../../Context/ShopifyContext'
 
 export default function Nav() {
@@ -15,13 +16,14 @@ export default function Nav() {
                 </a>
                 <ul className="items-stretch hidden space-x-3 md:flex">
                   <li className="flex">
-                    <a href="#products" className="flex items-center px-4 -mb-1 border-b-2 border-transparent active:bg-green-700">Products</a>
+                  <NavLink to="/" activeClassName="selected" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">
+                    Home
+                  </NavLink>
                   </li>
                   <li className="flex">
-                    <a href="#products" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">Features</a>
-                  </li>
-                  <li className="flex">
-                    <a href="#products" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-sky-600 border-sky-600">About us</a>
+                  <NavLink to="/about-us" activeClassName="selected" className="flex items-center px-4 -mb-1 border-b-2 border-transparent">
+                  About us
+                  </NavLink>
                   </li>
                   <li className="flex">
                     <button className=" flex items-center px-4 mb-2 border-b-2 border-transparent  justify-center flex-col" onClick={()=> OpenCart()} ><AiOutlineShopping className=" order-2  text-xl" /> <span className=" bg-black text-xs rounded-full h-4 w-full text-green-50 " >{Checkout?.lineItems?.length}</span> </button>
