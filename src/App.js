@@ -7,12 +7,13 @@ import Reviews from './Components/NewsLetter/Reviews';
 import Products from './Components/products/Products';
 import CheckoutSec from './Components/Checkout/Checkout';
 import { ShopifyContext } from './Context/ShopifyContext';
-import { useContext } from 'react';
+import { Suspense,lazy, useContext } from 'react';
 import {
 	Switch,
 	Route,
   } from "react-router-dom";
-import ProductPage from './Components/ProductPage/ProductPage';
+const ProductPage = lazy(() => import('./Components/ProductPage/ProductPage')); // Lazy-loaded
+
 
 
 function App() {
@@ -33,7 +34,9 @@ function App() {
           </Route>
 
 		<Route path="/product/:id">
+			<Suspense fallback={<p>Loading...</p>} > 
             <ProductPage />
+			</Suspense>				
           </Route>	
 		</Switch>
 		<Footer />

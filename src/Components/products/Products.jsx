@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext ,  Suspense } from 'react'
 import { ShopifyContext } from '../../Context/ShopifyContext'
-import ProductCard from './ProductCard'
-import LazyLoad from 'react-lazyload';
+const ProductCard = React.lazy(() => import('./ProductCard')); // Lazy-loaded
 
 
 export default function Products() {
@@ -16,16 +15,15 @@ export default function Products() {
 
                     <div className="mt-6 grid grid-cols-1   gap-y-10 gap-x-64 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {Products?.map((product) => 
-                        <LazyLoad offset={100} key={product.id}>
+                        <Suspense fallback={<p>Loading...</p>}> 
                         <ProductCard 
-                    image={product.images[0].src}
-                    title ={product.title}
-                    price={product.variants[0].price}
-                    variantsId={product.variants[0].id}
-                    productId={product.id}
-                    />
-                        </LazyLoad>
-                       
+                            image={product.images[0].src}
+                            title ={product.title}
+                            price={product.variants[0].price}
+                            variantsId={product.variants[0].id}
+                            productId={product.id}
+                            />
+                       </Suspense>
 
                     
                     )}

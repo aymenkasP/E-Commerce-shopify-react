@@ -13,6 +13,7 @@ export default function CheckoutItem({product}) {
                               <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                                 <img
                                   src={product?.variant?.image?.src}
+                                  loading="lazy"
                                   alt={product.imageAlt}
                                   className="w-full h-full object-center object-cover"
                                 />

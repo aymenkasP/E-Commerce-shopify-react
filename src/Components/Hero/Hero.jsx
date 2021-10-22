@@ -22,7 +22,7 @@ export default function Hero() {
       </div>
       
       <div className="xl:w-5/12 h-48 lg:h-auto bg-gray-100 overflow-hidden shadow-lg rounded-lg">
-        <img src={ImageUrl} alt="" className="w-full h-full object-cover object-center" />
+        <img src={ImageUrl} loading="lazy" alt="" className="w-full h-full object-cover object-center" />
       </div>
      
     </section>
