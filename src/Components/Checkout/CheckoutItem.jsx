@@ -23,9 +23,9 @@ export default function CheckoutItem({product}) {
                                 <div>
                                   <div className="flex justify-between text-base font-medium text-gray-900">
                                     <h3>
-                                        {product.title}
+                                        {product?.title}
                                     </h3>
-                                    <p className="ml-4">{product.variant.price}</p>
+                                    <p className="ml-4">{product?.variant?.price}</p>
                                   </div>
                                 </div>
                                 <div className="flex justify-between  p-1 items-center m-2">
@@ -39,7 +39,7 @@ export default function CheckoutItem({product}) {
                                     </button>
                                 <div className="flex-1 flex items-end justify-between text-sm">
                                       
-                                  <p className="text-gray-500">Qty {product.quantity}</p>
+                                  <p className="text-gray-500">Qty {product?.quantity}</p>
                                   <div className="flex">
                                   
                                     <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500" onClick={()=> removeItemFromCheckout(product.id)}>
