@@ -26,7 +26,7 @@ export default function Footer() {
 
 
     <div className="text-gray-400 text-sm text-center border-t border-gray-800 py-8">
-      © 2021 - Present Flowrift. All rights reserved.
+      © 2021 -  All rights reserved.
     </div>
 
   </footer>
