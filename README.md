@@ -1,6 +1,1 @@
-#chekout 
-#product page
-#rename
-
-
 
