@@ -4,8 +4,8 @@ import Client from 'shopify-buy';
 
 // Initializing a client to return content in the store's primary language
 const client = Client.buildClient({
-  domain: "bestuiux.myshopify.com",
-  storefrontAccessToken: "905353ce7282a7aec93fd7e6b7e39237"
+  domain:process.env.REACT_SHOPIFY_DOMAIN,
+  storefrontAccessToken:process.env.REACT_SHOPIFY_TOKEN
 });
 
 
